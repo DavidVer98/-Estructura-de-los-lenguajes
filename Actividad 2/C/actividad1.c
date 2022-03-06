@@ -1,3 +1,4 @@
+//Angel David Veron Cuevas
 #include <stdio.h>
 #include <stdlib.h>
 #define TAM_MAX 80

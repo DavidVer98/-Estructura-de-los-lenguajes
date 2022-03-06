@@ -1,4 +1,5 @@
 // para ejecutar mcs -out:actividad1.exe actividad1.cs 
+// Angel David Veron Cuevas
 using System;
 using System.Collections.Generic;
 

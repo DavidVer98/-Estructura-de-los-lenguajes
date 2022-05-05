@@ -41,6 +41,7 @@ hs_err_pid*
 *.pch
 
 # Libraries
+/node_modules
 *.lib
 *.a
 *.la

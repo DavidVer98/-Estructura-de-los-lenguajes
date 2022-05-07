@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Graficas</title>
+  </head>
+  <body>
+    <div style="width: 50%; text-align: center; margin-left: 25%;">
+      <h2>Se visualizan las 20 palabras con mayor número de apariciones.</h1>
+      <canvas id="myChart" width="800" height="500"></canvas>
+    </div>
+    <script>
+      var ctx = document.getElementById("myChart");
+      var lenguaje = [];
+      var nro_apariciones = [];
+      async function printJSON() {
+        const response = await fetch("grafica.json");
+        const json = await response.json();
+        console.log(json[0]);
+        for (var i = 0; i < 20; i++) {
+          lenguaje[i] = json[i].topic;
+          nro_apariciones[i] = json[i].repeticiones;
+        }
+
+        var myChart2 = new Chart(ctx, {
+          type: "bar",
+          data: {
+            labels: lenguaje,
+            datasets: [
+              {
+                label: "Topics",
+                data: nro_apariciones,
+                borderColor: "#EE6868",
+                backgroundColor: "#EE6868",
+                lineTension: 0,
+                borderWidth: 3,
+              },
+            ],
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true,
+              },
+            },
+            
+          },
+        });
+      }
+      printJSON();
+    </script>
+  </body>
+</html>

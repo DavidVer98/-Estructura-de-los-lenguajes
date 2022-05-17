@@ -8,12 +8,10 @@ const jsdom = require("jsdom");
 
 const tiobe_github = [
   "python","c","java","cpp","csharp","visual-basic","javascript","assembly","sql","php","r",
-   "delphi","go","swift","ruby","visual-basic-6","objective-c","perl","lua","matlab",
-];
+   "delphi","go","swift","ruby","visual-basic-6","objective-c","perl","lua","matlab"];
 const tiobe_lenguajes = [
   "python","C","Java","C++","C#","Visual Basic","JavaScript","Assembly language","SQL","PHP","R",
-  "Delphi/Object Pascal","Go","Swift","Ruby","Classic Visual Basic","Objective-C","Perl","Lua","MATLAB",
-];
+  "Delphi/Object Pascal","Go","Swift","Ruby","Classic Visual Basic","Objective-C","Perl","Lua","MATLAB"];
 
 const url_base = "https://github.com/topics/";
 
@@ -39,7 +37,8 @@ let count = 0;
         window: { document },
       } = new jsdom.JSDOM(body);
 
-      document.querySelectorAll(".h3").forEach(function (element) {
+      document.querySelectorAll(".h3.color-fg-muted").forEach(function (element) {
+        console.log(element.textContent);
         valor = parseInt(element.textContent.replace(",", "").match(reg)[0]);
         nro_apariciones.push(valor);  
         writeStream.write(`${tiobe_lenguajes[count]}|${valor}\n`);
